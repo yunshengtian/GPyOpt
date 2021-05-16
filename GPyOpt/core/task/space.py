@@ -302,7 +302,8 @@ class Design_space(object):
         if self.constraints is not None:
             for d in self.constraints:
                 try:
-                    exec('constraint = lambda x:' + d['constraint'], globals())
+                    # exec('constraint = lambda x:' + d['constraint'], globals())
+                    constraint = d['constraint']
                     ind_x = (constraint(x) <= 0) * 1
                     I_x *= ind_x.reshape(x.shape[0],1)
                 except:
